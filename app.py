@@ -35,5 +35,6 @@ def search(query):
 
     # : return json
     return jsonify(dictionary)
+
 if __name__ == "__main__":
     app.run()
