@@ -18,7 +18,14 @@ def index():
 def search(query):
     url = 'https://www.vocabulary.com/dictionary/' + query
     res = requests.get(url)
+
     html = BeautifulSoup(res.text, features="html.parser")
+    try:
+        # : h1 ele text
+        h1 = html.select('h1[class="dynamictext"]')[0]
+        dictionary['title'] = h1.text
+    except:
+        return "search result not found"
 
     # : h1 ele text
     h1 = html.select('h1[class="dynamictext"]')[0]
